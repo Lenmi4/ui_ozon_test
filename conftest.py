@@ -7,7 +7,8 @@ from pages.application import Application
 @pytest.fixture(scope='session')
 def app(request):
     base_url = request.config.getoption("--base-url")
-    fixture = Application(driver=webdriver.Chrome(), base_url)
+    fixture = Application(driver=webdriver.Chrome(), url=base_url)
+    fixture.driver.set_window_size(1920, 1080)
     yield fixture
     fixture.quit()
 
@@ -16,18 +17,18 @@ def pytest_addoption(parser):
     parser.addoption(
         "--base-url",
         action="store",
-        defult="https://www.gloria-jeans.ru/",
+        default="https://www.gloria-jeans.ru/",
         help="enter base_url",
     ),
     parser.addoption(
         "--username",
         action="store",
-        defult="mailavtotests@ya.ru",
+        default="mailavtotests@ya.ru",
         help="enter username",
     ),
     parser.addoption(
         "--password",
         action="store",
-        defult="Avto123",
+        default="Avto123",
         help="enter base_url",
     ),
