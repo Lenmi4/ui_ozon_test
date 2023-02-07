@@ -2,4 +2,4 @@
 Python selenium ui test
 
 
-testing application: https://www.ozon.ru/
+testing application: https://www.gloria-jeans.ru/
