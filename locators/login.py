@@ -13,6 +13,6 @@ class LoginPageLocators:
     FORM = (By.CLASS_NAME, "page-newhomepage")  # страница после авторизации пользователя
     ACCOUNT = (By.CSS_SELECTOR, "span[data-qa='account-link']") #кнопка кабинета пользователя после авторизации
     EXIT = (By.CLASS_NAME, "modal-account-choice caption--red") #выход из кабинета пользователя
-    EMAIL_ERROR = (By.CSS_SELECTOR, "p[data-qa='loginEmailError']") #Неверное имя пользователя или пароль
+    EMAIL_ERROR = (By.XPATH, "/html/body/div[16]/div/div[1]/div[3]/div[1]/div[2]/form/p[2]") #Неверное имя пользователя или пароль
 
 
