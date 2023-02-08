@@ -1,4 +1,4 @@
-# ui_ozon_test
+# ui_gloria-jeans_test
 Python selenium ui test
 
 
