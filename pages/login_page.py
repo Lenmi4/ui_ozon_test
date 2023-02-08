@@ -3,6 +3,7 @@ import time
 from selenium.webdriver.remote.webelement import WebElement
 
 from locators.login import LoginPageLocators
+from models.auth import AuthData
 from pages.base_page import BasePage
 
 
@@ -37,16 +38,17 @@ class LoginPage(BasePage):
         return self.app.driver.find_element(*LoginPageLocators.EXIT)
 
     def auth_email_error(self) -> str:
+        time.sleep(5)
         return self.app.driver.find_element(*LoginPageLocators.EMAIL_ERROR).text
 
-    def auth(self, login: str, password: str):
+    def auth(self, data: AuthData):
         # if self.is_auth():
         #     self.click_element(self.account())
         #     self.click_element(self.exit())
         self.click_element(self.modal_window_close())
         self.click_element(self.sign_in())
-        self.fill_element(self.email_input(), login)
-        self.fill_element(self.password_input(), password)
+        self.fill_element(self.email_input(), data.login)
+        self.fill_element(self.password_input(), data.password)
         self.click_element(self.button_click())
 
     # def auth(self, login: str, password: str):

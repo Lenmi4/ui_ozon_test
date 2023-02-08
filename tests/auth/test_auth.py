@@ -4,6 +4,8 @@ from common.constants import LoginConstants
 from locators.login import LoginPageLocators
 import time
 
+from models.auth import AuthData
+
 
 class TestAuth:
     def test_auth_valid_data(self, app):
@@ -14,7 +16,8 @@ class TestAuth:
         3. Check auth result
         """
         app.open_main_page()
-        app.login.auth(login="mailavtotests@ya.ru", password='Avto123')
+        data = AuthData(login="mailavtotests@ya.ru", password='Avto123')
+        app.login.auth(data)
         assert app.login.is_auth(), 'We are not auth'
 
 
@@ -26,5 +29,6 @@ class TestAuth:
         3. Check auth result
         """
         app.open_main_page()
-        app.login.auth(login="11111111", password='11111111')
-        assert LoginConstants.AUTH_ERROR == app.login.auth_email_error(), 'We are not auth'
+        data = AuthData.random()
+        app.login.auth(data)
+        assert app.login.auth_email_error() == LoginConstants.AUTH_ERROR, 'We are not auth'
