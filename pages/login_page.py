@@ -10,17 +10,17 @@ from pages.base_page import BasePage
 class LoginPage(BasePage):
 
     def is_auth(self):
-        time.sleep(5)
-        element = self.find_element(LoginPageLocators.ACCOUNT)
-        if element.text == "Лена":
+        # time.sleep(5)
+        # element = self.find_element(LoginPageLocators.BUTTON_ACCOUNT)
+        if self.find_element(LoginPageLocators.BUTTON_ACCOUNT):
             return True
         return False
 
-    def modal_window_close(self) -> WebElement:
-        return self.app.driver.find_element(*LoginPageLocators.MODAL_WINDOW_CLOSE)
+    #def modal_window_close(self) -> WebElement:
+        #return self.app.driver.find_element(*LoginPageLocators.MODAL_WINDOW_CLOSE)
 
-    def sign_in(self) -> WebElement:
-        return self.app.driver.find_element(*LoginPageLocators.SIGN_IN)
+    #def sign_in(self) -> WebElement:
+        #return self.app.driver.find_element(*LoginPageLocators.SIGN_IN)
 
     def email_input(self) -> WebElement:
         return self.app.driver.find_element(*LoginPageLocators.EMAIL)
@@ -31,22 +31,22 @@ class LoginPage(BasePage):
     def button_click(self) -> WebElement:
         return self.app.driver.find_element(*LoginPageLocators.BUTTON)
 
-    def account(self) -> WebElement:
-        return self.app.driver.find_element(*LoginPageLocators.ACCOUNT)
+    #def account(self) -> WebElement:
+        #return self.app.driver.find_element(*LoginPageLocators.ACCOUNT)
 
     def exit(self) -> WebElement:
         return self.app.driver.find_element(*LoginPageLocators.EXIT)
 
-    def auth_email_error(self) -> str:
-        time.sleep(5)
-        return self.app.driver.find_element(*LoginPageLocators.EMAIL_ERROR).text
+    def auth_error(self) -> WebElement:
+        #time.sleep(5)
+        return self.app.driver.find_element(*LoginPageLocators.ERROR)
 
     def auth(self, data: AuthData):
         # if self.is_auth():
         #     self.click_element(self.account())
         #     self.click_element(self.exit())
-        self.click_element(self.modal_window_close())
-        self.click_element(self.sign_in())
+        #self.click_element(self.modal_window_close())
+        #self.click_element(self.sign_in())
         self.fill_element(self.email_input(), data.login)
         self.fill_element(self.password_input(), data.password)
         self.click_element(self.button_click())
