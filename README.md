@@ -1,5 +1,5 @@
-# ui_gloria-jeans_test
+# ui_saucedemo_test
 Python selenium ui test
 
 
-testing application: https://www.gloria-jeans.ru/
+testing application: https://www.saucedemo.com/
