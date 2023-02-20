@@ -1,7 +1,6 @@
 import time
 
 from selenium.webdriver.remote.webelement import WebElement
-
 from locators.login import LoginPageLocators
 from models.auth import AuthData
 from pages.base_page import BasePage
@@ -10,17 +9,9 @@ from pages.base_page import BasePage
 class LoginPage(BasePage):
 
     def is_auth(self):
-        # time.sleep(5)
-        # element = self.find_element(LoginPageLocators.BUTTON_ACCOUNT)
         if self.find_element(LoginPageLocators.BUTTON_ACCOUNT):
             return True
         return False
-
-    #def modal_window_close(self) -> WebElement:
-        #return self.app.driver.find_element(*LoginPageLocators.MODAL_WINDOW_CLOSE)
-
-    #def sign_in(self) -> WebElement:
-        #return self.app.driver.find_element(*LoginPageLocators.SIGN_IN)
 
     def email_input(self) -> WebElement:
         return self.app.driver.find_element(*LoginPageLocators.EMAIL)
@@ -31,14 +22,14 @@ class LoginPage(BasePage):
     def button_click(self) -> WebElement:
         return self.app.driver.find_element(*LoginPageLocators.BUTTON)
 
-    #def account(self) -> WebElement:
-        #return self.app.driver.find_element(*LoginPageLocators.ACCOUNT)
-
-    def exit(self) -> WebElement:
-        return self.app.driver.find_element(*LoginPageLocators.EXIT)
+    def exit(self):
+        button_account = self.app.driver.find_element(*LoginPageLocators.BUTTON_ACCOUNT)
+        self.click_element(button_account)
+        button_exit = self.app.driver.find_element(*LoginPageLocators.EXIT)
+        time.sleep(3)
+        self.click_element(button_exit)
 
     def auth_error(self) -> WebElement:
-        #time.sleep(5)
         return self.app.driver.find_element(*LoginPageLocators.ERROR)
 
     def auth(self, data: AuthData):
@@ -50,6 +41,10 @@ class LoginPage(BasePage):
         self.fill_element(self.email_input(), data.login)
         self.fill_element(self.password_input(), data.password)
         self.click_element(self.button_click())
+
+    def full_page(self):
+        return self.app.driver.find_element(*LoginPageLocators.FULL_PAGE)
+
 
     # def auth(self, login: str, password: str):
     #     modal_window_close = self.app.driver.find_element(*LoginPageLocators.MODAL_WINDOW_CLOSE)
@@ -63,17 +58,6 @@ class LoginPage(BasePage):
     #     button_click = self.app.driver.find_element(*LoginPageLocators.BUTTON)
     #     button_click.click()
 
-
-# def auth(driver, user, password):
-#     driver.get('https://www.gloria-jeans.ru/')
-#     email = driver.find_element(*LoginPageLocators.EMAIL)
-#     passw = driver.find_element(*LoginPageLocators.PASSWORD)
-#     email.send_keys(user)
-#     passw.send_keys(password)
-#     driver.find_element(*LoginPageLocators.BUTTON).click()
-#
-#
-#
 
 
 
