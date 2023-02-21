@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from common.constants import CartConstants
 from models.auth import AuthData
 from pages.application import Application
 
@@ -15,6 +16,7 @@ def app(request):
     yield fixture
     fixture.quit()
 
+
 @pytest.fixture
 def auth(app, request):
     login = request.config.getoption("--username")
@@ -22,6 +24,12 @@ def auth(app, request):
     app.open_main_page()
     data = AuthData(login=login, password=password)
     app.login.auth(data)
+
+# @pytest.fixture
+# def add_product_in_cart(app):
+#     app.cart.button_add()
+#     app.cart.cart_shopping()
+
 
 def pytest_addoption(parser):
     parser.addoption(

@@ -46,6 +46,9 @@ class LoginPage(BasePage):
         return self.app.driver.find_element(*LoginPageLocators.FULL_PAGE)
 
 
+
+
+
     # def auth(self, login: str, password: str):
     #     modal_window_close = self.app.driver.find_element(*LoginPageLocators.MODAL_WINDOW_CLOSE)
     #     modal_window_close.click()

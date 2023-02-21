@@ -1,3 +1,4 @@
+
 import pytest
 
 from common.constants import LoginConstants
@@ -14,6 +15,9 @@ class TestAuth:
         3. Check auth result
         """
         app.open_main_page()
+        data = AuthData(login="standard_user", password='secret_sauce')
+        app.login.auth(data)
+        assert app.login.is_auth(), 'We are not auth'
 
     @pytest.mark.parametrize('field', ['login', 'password'])
     def test_auth_invalid_data(self, app, field):
@@ -65,3 +69,4 @@ class TestAuth:
         app.login.auth(data)
         app.login.exit()
         assert app.login.button_click(), 'We are auth'
+
