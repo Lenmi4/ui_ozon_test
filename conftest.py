@@ -1,17 +1,20 @@
+import logging
 import pytest
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
-from common.constants import CartConstants
 from models.auth import AuthData
 from pages.application import Application
 
 
+logger = logging.getLogger("moodle")
+
 @pytest.fixture(scope='session')
 def app(request):
     base_url = request.config.getoption("--base-url")
+    logger.info(f'Start moodle {base_url}')
     chrome_options = Options()
-    #chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--headless')
     fixture = Application(webdriver.Chrome(chrome_options=chrome_options), url=base_url)
     yield fixture
     fixture.quit()
