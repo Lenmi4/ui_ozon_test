@@ -1,8 +1,6 @@
-
 import pytest
 
 from common.constants import LoginConstants
-
 from models.auth import AuthData
 
 
