@@ -7,7 +7,10 @@ class CartPage(BasePage):
 
     def button_add(self):
         add = self.app.driver.find_element(*CartPageLocators.BUTTON_ADD)
-        self.click_element(add)
+        return add
+
+    def button_add_click(self):
+        self.click_element(self.button_add())
 
     def button_remove(self):
         remove = self.app.driver.find_element(*CartPageLocators.BUTTON_REMOVE)

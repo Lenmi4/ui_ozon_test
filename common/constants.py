@@ -6,4 +6,8 @@ class LoginConstants:
 
 class CartConstants:
     PRODUCT_TITLE = 'Sauce Labs Bike Light'
-    #BUTTON_ADD_NAME = "Add to cart"
+    BUTTON_ADD_NAME = "ADD TO CART"
+
+
+class ProductConstants:
+    NOT_CORRECT_SINGS = r"[\\^.()/+*@#|%$!=`~:;'&]"
