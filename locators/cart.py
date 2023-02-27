@@ -10,3 +10,4 @@ class CartPageLocators:
     BUTTON_ADD_2 = (By.ID, "add-to-cart-sauce-labs-backpack") # кнопка добавления 2го товара в корзину
     BUTTON_CART_NUMBER = (By.CLASS_NAME, "shopping_cart_badge") # количество товаров в корзине
     CART_REMOVED = (By.CLASS_NAME, "removed_cart_item") # элемент после удаления товара из корзины
+

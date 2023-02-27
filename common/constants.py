@@ -6,3 +6,4 @@ class LoginConstants:
 
 class CartConstants:
     PRODUCT_TITLE = 'Sauce Labs Bike Light'
+    #BUTTON_ADD_NAME = "Add to cart"
