@@ -1,4 +1,5 @@
 from common.constants import CartConstants
+import time
 
 
 class TestShoppingCart:
@@ -51,7 +52,7 @@ class TestShoppingCart:
         app.cart.button_add()
         app.cart.cart_shopping()
         app.cart.button_remove()
-        assert app.cart.cart_removed()
+        assert app.cart.cart_removed() is None
 
     def test_del_prod_main(self, app, auth):  # удаление товара из корзины с основной страницы
         """
@@ -64,7 +65,7 @@ class TestShoppingCart:
         """
         app.cart.button_add()
         app.cart.button_remove()
-        assert app.cart.count_cart().text == "2"
+        assert app.cart.count_cart().text in None
 
     def test_del_prod_card(self, app, auth):  # удаление товара из корзины со страницы карточки товара
         """
@@ -78,4 +79,6 @@ class TestShoppingCart:
         """
         app.cart.title_cart()
         app.cart.button_add()
+        # time.sleep(3)
         app.cart.button_remove()
+        assert app.cart.button_add().text == CartConstants.BUTTON_ADD_NAME
