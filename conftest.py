@@ -6,15 +6,15 @@ from selenium.webdriver.chrome.options import Options
 from models.auth import AuthData
 from pages.application import Application
 
-
 logger = logging.getLogger("moodle")
+
 
 @pytest.fixture(scope='session')
 def app(request):
     base_url = request.config.getoption("--base-url")
     logger.info(f'Start moodle {base_url}')
     chrome_options = Options()
-    chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--headless')
     fixture = Application(webdriver.Chrome(chrome_options=chrome_options), url=base_url)
     yield fixture
     fixture.quit()
@@ -27,6 +27,7 @@ def auth(app, request):
     app.open_main_page()
     data = AuthData(login=login, password=password)
     app.login.auth(data)
+
 
 # @pytest.fixture
 # def add_product_in_cart(app):

@@ -17,4 +17,7 @@ class Application:
     def quit(self):
         self.driver.quit()
 
+    def make_screenshot(self):
+        pass
+
 
