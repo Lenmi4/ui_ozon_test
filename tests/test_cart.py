@@ -1,9 +1,11 @@
 from common.constants import CartConstants
 import time
+import allure
 
 
+@allure.description("добавление товара в корзину с основной страницы")
 class TestShoppingCart:
-    def test_add_prod_main_page(self, app, auth):  # добавление товара в корзину с основной страницы
+    def test_add_prod_main_page(self, app, auth):
         """
         Steps:
         1. Auth with valid data
